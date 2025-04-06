@@ -129,4 +129,7 @@
   <data name="PASSWORD_EMPTY" xml:space="preserve">
     <value>The password must be more than 6 letters</value>
   </data>
+  <data name="UNKOWN_ERROR" xml:space="preserve">
+    <value>Unkown Error</value>
+  </data>
 </root>
