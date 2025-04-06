@@ -2,7 +2,7 @@
 
 public class ErrorOnValidationException : MyRecipeBookException
 {
-    IList<string> ErrorMessages { get; set; }
+    public IList<string> ErrorMessages { get; set; }
 
     public ErrorOnValidationException(IList<string> errorMessages)
     {
