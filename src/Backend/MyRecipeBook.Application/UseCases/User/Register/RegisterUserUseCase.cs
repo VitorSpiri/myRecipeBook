@@ -2,13 +2,16 @@
 using MyRecipeBook.Application.AutoMapper;
 using MyRecipeBook.Communication.Requests;
 using MyRecipeBook.Communication.Response;
+using MyRecipeBook.Domain.Repositories.User;
 using MyRecipeBook.Exceptions.ExceptionsBase;
 
 namespace MyRecipeBook.Application.UseCases.User.Register;
 
 public class RegisterUserUseCase
 {
-    public ResponseRegisterUserJson Execute(RequestRegisterUserJson request)
+    private readonly IUserWriteOnlyRepository _writeOnlyRepository;
+    private readonly IUserReadOnlyRepository _readOnlyRepository;
+    public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
     {
         Validate(request);
 
@@ -22,6 +25,7 @@ public class RegisterUserUseCase
         // Criptografia da senha
 
         // Salvar no banco de dados
+        await _writeOnlyRepository.Add(user);
 
         return new ResponseRegisterUserJson
         {
